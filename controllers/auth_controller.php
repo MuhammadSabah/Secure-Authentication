@@ -25,7 +25,7 @@ class Users
             empty($data['usersPwd'])
         ) {
             flash("register", "Please fill out all inputs");
-            redirect("../signup.php");
+            redirect("../signup");
         }
 
         if (!preg_match("/^[a-zA-Z0-9]*$/", $data['usersName'])) {
