@@ -7,8 +7,9 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
 
     if (ctype_xdigit($selector) && ctype_xdigit($validator)) { ?>
         <?php
-        include_once './helper/session_helper.php';
+        include_once '../../helper/session_helper.php';
         ?>
+
 
         <?php flash('newReset') ?>
         <!--  -->
@@ -21,8 +22,8 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
             <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-            <link rel="stylesheet" href="asset/css/auth-form.css">
-            <link rel="stylesheet" href="asset/css/navbar.css">
+            <link rel="stylesheet" href="../../../public/asset/css/auth-form.css">
+            <link rel="stylesheet" href="../../../public/asset/css/navbar.css">
             <script defer type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
             <title>Dashboard</title>
@@ -31,10 +32,10 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
 
         <body>
             <header>
-                <?php require('views/layout/header.php'); ?>
+                <?php require('../layout/header.php'); ?>
             </header>
             <main>
-                <form class="form-reset" method="post" action="./controllers/reset_controller.php">
+                <form class="form-reset" method="post" action="../../controllers/reset_controller.php">
                     <h1 class="h3 mb-3 fw-normal">Reset Password</h1>
                     <input type="hidden" name="type" value="reset" />
                     <input type="hidden" name="selector" value="<?php echo $selector ?>" />
@@ -54,7 +55,6 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
         </body>
 
         </html>
-        <!--  -->
 
 <?php
     } else {

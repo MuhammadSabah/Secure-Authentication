@@ -1,10 +1,9 @@
 <?php
-include_once './helper/session_helper.php';
+include_once '../../helper/session_helper.php';
 ?>
 
 <?php flash('login'); ?>
-
-<form class="form-login" method="post" action="./controllers/auth_controller.php">
+<form class="form-login" method="post" action="../../controllers/auth_controller.php">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
     <input type="hidden" name="type" value="login">
     <div class="form-floating">

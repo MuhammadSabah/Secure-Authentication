@@ -18,7 +18,12 @@ body {
   width: 100%;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
+}
+.form-edit {
+  width: 100%;
+  min-width: 550px;
+  padding: 15px;
+  /* margin: auto; */
 }
 
 .form-login .checkbox .form-reset {
@@ -78,4 +83,23 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+/* ******************************************** */
+
+.edit-container {
+  display: flex;
+}
+
+.form-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+  padding: 15px;
+  justify-self: end;
+}
+
+.image-box {
+  width: 50%;
 }

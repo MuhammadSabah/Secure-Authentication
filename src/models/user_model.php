@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Models;
+use App\Config\Database;
+
 require_once dirname(__DIR__) . '../config/config.php';
 
 class User
@@ -62,6 +65,43 @@ class User
 
         if ($this->db->execute()) {
             return true;
+        } else {
+            return false;
+        }
+    }
+    public function updateUserInfo($usersName, $usersEmail, $phoneNo, $usersId)
+    {
+        $this->db->query('UPDATE users SET usersName=:usersName, usersEmail=:usersEmail, phoneNo=:phoneNo WHERE usersId=:usersId');
+        $this->db->bind(':usersName', $usersName);
+        $this->db->bind(':usersEmail', $usersEmail);
+        $this->db->bind(':phoneNo', $phoneNo);
+        $this->db->bind(':usersId', $usersId);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function changePassword($oldPwdHash, $newPwdHash, $usersEmail)
+    {
+        $this->db->query('SELECT usersPwd FROM users WHERE usersEmail=:usersEmail');
+        $this->db->bind(':usersEmail', $usersEmail);
+        $row = $this->db->single();
+        $hashedPassword = $row->usersPwd;
+
+        if (password_verify($oldPwdHash, $hashedPassword)) {
+            $this->db->query('UPDATE users SET usersPwd=:pwd WHERE usersEmail=:usersEmail');
+            $newHashedPassword = password_hash($newPwdHash, PASSWORD_DEFAULT);
+            $this->db->bind(':pwd', $newHashedPassword);
+            $this->db->bind(':usersEmail', $usersEmail);
+
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

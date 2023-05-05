@@ -1,9 +1,9 @@
 <?php
-include_once './helper/session_helper.php';
+include_once '../../helper/session_helper.php';
 ?>
 <?php flash('register'); ?>
 
-<form class="form-signup" method="post" action="./controllers/auth_controller.php">
+<form class="form-signup" method="post" action="../../controllers/auth_controller.php">
     <h1 class="h3 mb-3 fw-normal">Signup</h1>
     <input type="hidden" name="type" value="register">
     <div class="form-floating">
