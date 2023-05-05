@@ -1,5 +1,5 @@
 {
-  "name": "leonvo/b-muhammad-sabah-ibrahim-4",
+  "name": "leonvo/secure-authentication",
   "autoload": {
     "psr-4": {
       "App": "src/"

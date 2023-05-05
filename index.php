@@ -2,7 +2,7 @@
 
 use App\Config\Application;
 
-require_once __Dir__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $app = new Application();
 
