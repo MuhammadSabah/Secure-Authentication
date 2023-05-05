@@ -103,3 +103,8 @@ body {
 .image-box {
   width: 50%;
 }
+
+.pass-container {
+  padding: 15px;
+  justify-content: flex-start !important;
+}

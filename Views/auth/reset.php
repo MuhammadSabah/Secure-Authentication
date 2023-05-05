@@ -7,7 +7,7 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
 
     if (ctype_xdigit($selector) && ctype_xdigit($validator)) { ?>
         <?php
-        include_once '../../helper/session_helper.php';
+        include_once "Helper\session_helper.php";
         ?>
 
 
@@ -35,7 +35,7 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
                 <?php require('../layout/header.php'); ?>
             </header>
             <main>
-                <form class="form-reset" method="post" action="../../controllers/reset_controller.php">
+                <form class="form-reset" method="post" action="Controllers/reset_controller.php">
                     <h1 class="h3 mb-3 fw-normal">Reset Password</h1>
                     <input type="hidden" name="type" value="reset" />
                     <input type="hidden" name="selector" value="<?php echo $selector ?>" />

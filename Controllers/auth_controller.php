@@ -1,8 +1,5 @@
 <?php
 
-namespace App\Controllers;
-
-use App\Models\User;
 
 require_once dirname(__DIR__) . '../models/user_model.php';
 require_once dirname(__DIR__) . '../helper/session_helper.php';
@@ -95,6 +92,7 @@ class Users
         $_SESSION['usersName'] = $user->usersName;
         $_SESSION['phoneNo'] = $user->phoneNo;
         $_SESSION['usersEmail'] = $user->usersEmail;
+        $_SESSION['fileUrl'] = "";
         redirect("../dashboard");
     }
 
@@ -104,6 +102,7 @@ class Users
         unset($_SESSION['usersName']);
         unset($_SESSION['phoneNo']);
         unset($_SESSION['usersEmail']);
+        unset($_SESSION['fileUrl']);
         session_destroy();
         redirect("../login");
     }

@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Models;
-use App\Config\Database;
 
 require_once dirname(__DIR__) . '../config/config.php';
 
@@ -69,13 +67,14 @@ class User
             return false;
         }
     }
-    public function updateUserInfo($usersName, $usersEmail, $phoneNo, $usersId)
+    public function updateUserInfo($usersName, $usersEmail, $phoneNo, $usersId, $imageUrl)
     {
-        $this->db->query('UPDATE users SET usersName=:usersName, usersEmail=:usersEmail, phoneNo=:phoneNo WHERE usersId=:usersId');
+        $this->db->query('UPDATE users SET usersName=:usersName, usersEmail=:usersEmail, phoneNo=:phoneNo, imageUrl=:imageUrl WHERE usersId=:usersId');
         $this->db->bind(':usersName', $usersName);
         $this->db->bind(':usersEmail', $usersEmail);
         $this->db->bind(':phoneNo', $phoneNo);
         $this->db->bind(':usersId', $usersId);
+        $this->db->bind(':imageUrl', $imageUrl);
 
         if ($this->db->execute()) {
             return true;

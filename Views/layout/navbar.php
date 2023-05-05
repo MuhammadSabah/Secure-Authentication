@@ -5,7 +5,7 @@
         }
     else : {
             $userName = $_SESSION["usersName"];
-            echo '<li class="nav-item"><a class="nav-link" href="dashboard">Blogs</a></li>
+            echo '<li class="nav-item"><a class="nav-link" href="dashboard">Dashboard</a></li>
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <ion-icon class="ion-icon ion-nav-icon" name="person-circle-outline"></ion-icon>

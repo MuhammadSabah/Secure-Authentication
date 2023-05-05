@@ -1,8 +1,5 @@
 <?php
 
-namespace App\Controllers;
-
-use App\Models\User;
 
 require_once dirname(__DIR__) . '../models/user_model.php';
 require_once dirname(__DIR__) . '../helper/session_helper.php';
@@ -16,6 +13,17 @@ class EditController
     }
     public function updateInfo()
     {
+        $fileUrl = '';
+        if (isset($_FILES['image'])) {
+            $file_name = $_FILES['image']['name'];
+            $file_tmp = $_FILES['image']['tmp_name'];
+
+            $upload_dir = "uploads/";
+            move_uploaded_file($file_tmp, $upload_dir . $file_name);
+        }
+
+        $fileUrl = $upload_dir . $file_name;
+
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = [
             'usersName' => trim($_POST['usersName']),
@@ -26,11 +34,12 @@ class EditController
 
         if ($this->userModel->findUserByEmailOrUsername($data['usersEmail'], $data['usersEmail'])) {
 
-            $this->userModel->updateUserInfo($data['usersName'], $data['usersEmail'], $data['phoneNo'], $data['usersId']);
+            $this->userModel->updateUserInfo($data['usersName'], $data['usersEmail'], $data['phoneNo'], $data['usersId'], $fileUrl);
             $_SESSION['usersId'] = $data['usersId'];
             $_SESSION['usersName'] = $data['usersName'];
             $_SESSION['usersEmail'] = $data['usersEmail'];
             $_SESSION['phoneNo'] = $data['phoneNo'];
+            $_SESSION['fileUrl'] = $fileUrl;
             redirect("../account");
         } else {
             flash("dashboard", "No user found");

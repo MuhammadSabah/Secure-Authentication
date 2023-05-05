@@ -5,7 +5,7 @@ saveChangesButton.addEventListener("click", (event) => {
   const editForm = document.querySelector(".form-edit");
   const formData = new FormData(editForm);
 
-  fetch("./controllers/edit_controller.php", {
+  fetch("Controllers/edit_controller.php", {
     method: "POST",
     body: formData,
   })
@@ -31,7 +31,7 @@ saveChangesPassword.addEventListener("click", (event) => {
   const passwordForm = document.querySelector(".form-password");
   const formData = new FormData(passwordForm);
   console.log(formData);
-  fetch("./controllers/edit_controller.php", {
+  fetch("Controllers/edit_controller.php", {
     method: "POST",
     body: formData,
   })

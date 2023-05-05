@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Controllers;
-
-use App\Models\User;
 use PHPMailer\PHPMailer\PHPMailer;
 
 require_once dirname(__DIR__) . '../../PHPMailer/src/PHPMailer.php';
 require_once dirname(__DIR__) . '../../PHPMailer/src/Exception.php';
 require_once dirname(__DIR__) . '../../PHPMailer/src/SMTP.php';
 require_once dirname(__DIR__) . '../model/user_model.php';
+require_once dirname(__DIR__) . '../models/reset_password.php';
+require_once dirname(__DIR__) . '../helper/session_helper.php';
 
 
 class ResetPasswords

@@ -1,8 +1,5 @@
 <?php
 
-namespace App\Controllers;
-
-use App\Config\Database;
 
 require_once dirname(__DIR__) . '../config/config.php';
 
