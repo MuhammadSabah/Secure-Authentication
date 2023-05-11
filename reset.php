@@ -10,7 +10,6 @@ if (empty($_GET['selector']) || empty($_GET['validator'])) {
         include_once "./Helper/session_helper.php";
         ?>
 
-
         <?php flash('newReset') ?>
         <!--  -->
         <!DOCTYPE html>

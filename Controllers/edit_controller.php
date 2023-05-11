@@ -16,15 +16,14 @@ class EditController
         if (isset($_FILES['image'])) {
             $file_name = $_FILES['image']['name'];
             $file_tmp = $_FILES['image']['tmp_name'];
+            $target_dir = "uploads/";
+            $path = $target_dir . basename($file_name);
 
-            $upload_dir = "./uploads/";
-            if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
-            }
-            move_uploaded_file($file_tmp, $upload_dir . $file_tmp);
+            $target_file = 'uploads/' . basename($file_name);
+            move_uploaded_file($file_tmp, $target_file);
         }
 
-        $fileUrl = $upload_dir . $file_name;
+        $fileUrl = $path;
 
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = [
