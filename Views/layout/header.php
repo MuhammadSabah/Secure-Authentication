@@ -11,7 +11,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse  justify-content-end" id=" navbarNavDropdown">
-                <?php require('views/layout/navbar.php'); ?>
+                <?php require('Views/layout/navbar.php'); ?>
             </div>
         </div>
     </nav>

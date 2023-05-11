@@ -1,8 +1,8 @@
 <?php
 
 
-require_once dirname(__DIR__) . '../models/user_model.php';
-require_once dirname(__DIR__) . '../helper/session_helper.php';
+require_once dirname(__DIR__) . '../Models/user_model.php';
+require_once dirname(__DIR__) . '../Helper/session_helper.php';
 
 class Users
 {
@@ -92,7 +92,7 @@ class Users
         $_SESSION['usersName'] = $user->usersName;
         $_SESSION['phoneNo'] = $user->phoneNo;
         $_SESSION['usersEmail'] = $user->usersEmail;
-        $_SESSION['fileUrl'] = "";
+        $_SESSION['fileUrl'] = $user->imageUrl;
         redirect("../dashboard");
     }
 

@@ -1,6 +1,4 @@
 <?php
-
-
 require_once dirname(__DIR__) . '../Config/Config.php';
 
 class ResetPassword

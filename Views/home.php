@@ -16,15 +16,14 @@ session_start();
     <script defer type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Dashboard</title>
-
 </head>
 
 <body>
     <header>
-        <?php require('views/layout/header.php'); ?>
+        <?php require('Views/layout/header.php'); ?>
     </header>
     <main>
-        <?php require('./src/config/router.php'); ?>
+        <?php require('./src/Config/Router.php'); ?>
     </main>
 
 </body>

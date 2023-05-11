@@ -1,8 +1,7 @@
 <?php
 
-
-require_once dirname(__DIR__) . '../models/user_model.php';
-require_once dirname(__DIR__) . '../helper/session_helper.php';
+require_once dirname(__DIR__) . '../Models/user_model.php';
+require_once dirname(__DIR__) . '../Helper/session_helper.php';
 
 class EditController
 {
@@ -18,8 +17,11 @@ class EditController
             $file_name = $_FILES['image']['name'];
             $file_tmp = $_FILES['image']['tmp_name'];
 
-            $upload_dir = "uploads/";
-            move_uploaded_file($file_tmp, $upload_dir . $file_name);
+            $upload_dir = "./uploads/";
+            if (!file_exists($upload_dir)) {
+                mkdir($upload_dir, 0777, true);
+            }
+            move_uploaded_file($file_tmp, $upload_dir . $file_tmp);
         }
 
         $fileUrl = $upload_dir . $file_name;
