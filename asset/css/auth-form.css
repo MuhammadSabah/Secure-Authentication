@@ -14,16 +14,18 @@ body {
   padding: 15px;
   margin: auto;
 }
+
 .form-reset {
   width: 100%;
   max-width: 330px;
   padding: 15px;
 }
+
 .form-edit {
   width: 100%;
   min-width: 550px;
   padding: 15px;
-  /* margin: auto; */
+  margin: auto;
 }
 
 .form-login .checkbox .form-reset {
@@ -45,9 +47,11 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .form-reset input[type="email"] {
   margin-bottom: 10px;
 }
+
 .form-reset input[type="password"] {
   margin-bottom: 10px;
 }
@@ -87,11 +91,24 @@ body {
 
 /* ******************************************** */
 
-.edit-container {
+/* .edit-container {
   display: flex;
-}
+} */
 
 .form-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+  padding: 15px;
+  justify-self: end;
+}
+
+#form-password {
+  width: 100%;
+  min-width: 550px;
+  margin-left: auto;
+  margin-right: 25px;
   display: flex;
   flex-direction: column;
   gap: 10px;

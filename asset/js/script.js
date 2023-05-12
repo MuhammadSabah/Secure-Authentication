@@ -54,11 +54,46 @@
 $(document).ready(function () {
   $(".save-changes").click(function () {
     $.ajax({
-      url: "Controllers/edit_controller.php",
       type: "POST",
-      data: $(".form-edit").serialize(),
+      url: "Controllers/edit_controller.php",
+      data: {
+        type: "update",
+        usersId: $("#floatingInputId").val(),
+        usersName: $("#floatingName").val(),
+        usersEmail: $("#floatingInputEmail").val(),
+        phoneNo: $("#phoneNo").val(),
+      },
       success: function (data) {
         console.log(data);
+        $("#floatingInputId").html(data.usersId);
+        $("#floatingName").html(data.usersName);
+        $("#floatingInputEmail").html(data.usersEmail);
+        $("#phoneNo").html(data.phoneNo);
+      },
+      error: function (xhr, status, strErr) {
+        alert("There was an error!");
+      },
+    });
+  });
+
+  /// Edit Password
+  $(".save-password").click(function () {
+    $.ajax({
+      type: "POST",
+      url: "Controllers/edit_controller.php",
+      data: {
+        type: "change",
+        usersEmail: $("#usersEmail").val(),
+        usersPwd: $("#floatingPassword").val(),
+        usersPwdConfirm: $("#floatingPasswordConfirm").val(),
+      },
+      success: function (data) {
+        console.log(data);
+        $("#floatingPassword").html("");
+        $("#floatingPasswordConfirm").html("");
+      },
+      error: function (xhr, status, strErr) {
+        alert("There was an error!");
       },
     });
   });

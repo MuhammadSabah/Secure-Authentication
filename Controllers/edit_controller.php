@@ -12,20 +12,20 @@ class EditController
     }
     public function updateInfo()
     {
-        $fileUrl = '';
-        if (isset($_FILES['image'])) {
-            $file_name = $_FILES['image']['name'];
-            $file_tmp = $_FILES['image']['tmp_name'];
-            $target_dir = "uploads/";
-            $path = $target_dir . basename($file_name);
+        // $fileUrl = '';
+        // if (isset($_FILES['image'])) {
+        //     $file_name = $_FILES['image']['name'];
+        //     $file_tmp = $_FILES['image']['tmp_name'];
+        //     $target_dir = "uploads/";
+        //     $path = $target_dir . basename($file_name);
 
-            $target_file = 'uploads/' . basename($file_name);
-            move_uploaded_file($file_tmp, $target_file);
-        }
+        //     $target_file = 'uploads/' . basename($file_name);
+        //     move_uploaded_file($file_tmp, $target_file);
+        // }
 
-        $fileUrl = $path;
+        // $fileUrl = $path;
 
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        ///////////////////////////////////////////////////////////////////
         $data = [
             'usersName' => trim($_POST['usersName']),
             'phoneNo' => trim($_POST['phoneNo']),
@@ -34,14 +34,14 @@ class EditController
         ];
 
         if ($this->userModel->findUserByEmailOrUsername($data['usersEmail'], $data['usersEmail'])) {
-
-            $this->userModel->updateUserInfo($data['usersName'], $data['usersEmail'], $data['phoneNo'], $data['usersId'], $fileUrl);
+            $this->userModel->updateUserInfo($data['usersName'], $data['usersEmail'], $data['phoneNo'], $data['usersId'], "");
             $_SESSION['usersId'] = $data['usersId'];
             $_SESSION['usersName'] = $data['usersName'];
             $_SESSION['usersEmail'] = $data['usersEmail'];
             $_SESSION['phoneNo'] = $data['phoneNo'];
-            $_SESSION['fileUrl'] = $fileUrl;
-            redirect("../account");
+            $_SESSION['fileUrl'] = "";
+            // redirect("../account");
+            echo json_encode($data);
         } else {
             flash("dashboard", "No user found");
             redirect("../dashboard");
@@ -50,7 +50,6 @@ class EditController
 
     public function changePassword()
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = [
             'usersPwd' => trim($_POST['usersPwd']),
             'usersPwdConfirm' => trim($_POST['usersPwdConfirm']),
@@ -59,7 +58,8 @@ class EditController
 
         if ($this->userModel->findUserByEmailOrUsername($data['usersEmail'], $data['usersEmail'])) {
             $this->userModel->changePassword($data['usersPwd'], $data['usersPwdConfirm'], $data['usersEmail']);
-            redirect("../account");
+            // redirect("../account");
+            echo json_encode($data);
         } else {
             flash("dashboard", "No user found");
             redirect("../dashboard");

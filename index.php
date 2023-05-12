@@ -26,7 +26,8 @@ session_start();
     <main>
         <?php require('./Config/Router.php'); ?>
     </main>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
 </body>
 
 </html>
