@@ -12,18 +12,20 @@ class EditController
     }
     public function updateInfo()
     {
-        // $fileUrl = '';
-        // if (isset($_FILES['image'])) {
-        //     $file_name = $_FILES['image']['name'];
-        //     $file_tmp = $_FILES['image']['tmp_name'];
-        //     $target_dir = "uploads/";
-        //     $path = $target_dir . basename($file_name);
+        $dirName = "uploads";
+        if (!is_dir($dirName)) {
+            mkdir($dirName);
+        }
 
-        //     $target_file = 'uploads/' . basename($file_name);
-        //     move_uploaded_file($file_tmp, $target_file);
-        // }
+        $fileName = $_FILES['image']['name'];
+        $fileTmpName = $_FILES['image']['tmp_name'];
 
-        // $fileUrl = $path;
+        $fileDestination =  '../uploads/' . $fileName;
+        if (file_exists($fileTmpName)) {
+            move_uploaded_file($fileTmpName, $fileDestination);
+        }
+
+        $fileUrl = $fileDestination ?? "uploads/default.png";
 
         ///////////////////////////////////////////////////////////////////
         $data = [
@@ -31,15 +33,16 @@ class EditController
             'phoneNo' => trim($_POST['phoneNo']),
             'usersEmail' => trim($_POST['usersEmail']),
             'usersId' => trim($_POST['usersId']),
+            'fileUrl' => $fileUrl,
         ];
 
         if ($this->userModel->findUserByEmailOrUsername($data['usersEmail'], $data['usersEmail'])) {
-            $this->userModel->updateUserInfo($data['usersName'], $data['usersEmail'], $data['phoneNo'], $data['usersId'], "");
+            $this->userModel->updateUserInfo($data['usersName'], $data['usersEmail'], $data['phoneNo'], $data['usersId'], $fileUrl);
             $_SESSION['usersId'] = $data['usersId'];
             $_SESSION['usersName'] = $data['usersName'];
             $_SESSION['usersEmail'] = $data['usersEmail'];
             $_SESSION['phoneNo'] = $data['phoneNo'];
-            $_SESSION['fileUrl'] = "";
+            $_SESSION['fileUrl'] = $fileUrl;
             // redirect("../account");
             echo json_encode($data);
         } else {

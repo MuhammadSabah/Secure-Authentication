@@ -1,14 +1,10 @@
-<?php
-
-$image_url = isset($_SESSION['fileUrl']) ? $_SESSION['fileUrl'] : '';
-$img_tag = '<img id="uploadPreview" style="width: 260px; height: 260px;" src="' . $image_url . '" />';
-?>
 <h1>Account Settings</h1>
 <div>
     <div>
-        <form class="justify-content-between  d-flex" enctype="multipart/form-data">
+        <form class="justify-content-between d-flex" id="uploadForm" enctype="multipart/form-data">
             <div class="image-box d-flex flex-column p-2 ">
-                <?php echo $img_tag; ?>
+                <img id="uploadPreview" style="width: 260px; height: 260px;" src="http://localhost/b-muhammad-sabah-ibrahim-4<?php echo isset($_SESSION['fileUrl']) ? $_SESSION['fileUrl'] : ''; ?>" />
+                <!-- <img id="uploadPreview" style="width: 260px; height: 260px;" src="http://localhost/b-muhammad-sabah-ibrahim-4/uploads/default.jpg" /> -->
                 <input class="mt-2" id="uploadImage" type="file" name="image" onchange="PreviewImage();" value="<?php echo isset($_SESSION['fileUrl']) ? $_SESSION['fileUrl'] : ''; ?>" />
                 <script type="text/javascript">
                     function PreviewImage() {
